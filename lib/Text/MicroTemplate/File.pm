@@ -47,7 +47,7 @@ sub build_file {
     }
     # setup ($filepath, @st)
     my ($filepath, @st);
-    if ($file =~ m|^/|) {
+    if ($file =~ m|^/| || $^O eq 'MSWin32' and $file =~ m|^[a-zA-Z]:[\\/]|) {
         # absolute path
         $filepath = $file;
         @st = stat $filepath;
